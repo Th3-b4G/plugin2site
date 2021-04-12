@@ -25,14 +25,19 @@ def plugin4life():
 	pluglist = raw_input("GIVE ME YUOUR PLUGIN LIST? :")
 	pluglist = open(pluglist, 'r').read().splitlines()
 	for plugin in pluglist:
-		countx = 1
-		while  countx < 20000 :
-			payloadx = requests.get("http://pluginu.com/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
-			list = re.findall('<p style="margin-bottom: 20px">(.*?)</p></a>', payloadx)
-			for x in list:
-				print("[+]"+plugin +" :"+" page :"+str(countx)+"  >>"+ x)
-				open("plugin.txt", "a").write(x + "\n")
-			countx = countx+1
+		payloadx = requests.get("http://pluginu.com/"+plugin+"/", headers=headers, timeout=3).text
+		if 'Page Not Found 404' in payloadx:
+			print("not fount plugin")
+			pass
+		else:
+			countx = 1
+			while  countx < 20000 :
+				payloadx = requests.get("http://pluginu.com/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
+				list = re.findall('<p style="margin-bottom: 20px">(.*?)</p></a>', payloadx)
+				for x in list:
+					print("[+]"+plugin +" :"+" page :"+str(countx)+"  >>"+ x)
+					open("plugin.txt", "a").write(x + "\n")
+				countx = countx+1
 #<----------TOOL 1 --------------->
 
 #<----------TOOL 2 --------------->
@@ -46,14 +51,19 @@ def pesta4life():
 	pluglist = raw_input("GIVE ME YUOUR PLUGIN LIST? :")
 	pluglist = open(pluglist, 'r').read().splitlines()
 	for plugin in pluglist:
-		countx = 1
-		while  countx < 20000 :
-			payloadx = requests.get("http://prestasites.com/theme/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
-			list = re.findall('<h3 style="margin-bottom: 20px">(.*?)</h3></a>', payloadx)
-			for x in list:
-				print("[+]"+plugin +" :"+" page :"+str(countx)+"  >>"+ x)
-				open("pesta-plugin.txt", "a").write(x + "\n")
-			countx = countx+1
+		payloadx = requests.get("http://prestasites.com/theme/"+plugin+"/", headers=headers, timeout=3).text
+		if 'Result not found' in payloadx:
+			print("not fount plugin")
+			pass
+		else:
+			countx = 1
+			while  countx < 20000 :
+				payloadx = requests.get("http://prestasites.com/theme/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
+				list = re.findall('<h3 style="margin-bottom: 20px">(.*?)</h3></a>', payloadx)
+				for x in list:
+					print("[+]"+plugin +" :"+" page :"+str(countx)+"  >>"+ x)
+					open("pesta-plugin.txt", "a").write(x + "\n")
+				countx = countx+1
 #<----------TOOL 2 --------------->
 
 #<----------HELP --------------->
@@ -91,4 +101,7 @@ elif doIT == '1':
 elif doIT == '3':
 	help()
     
-   
+
+
+
+

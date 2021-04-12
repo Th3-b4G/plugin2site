@@ -26,7 +26,7 @@ def plugin4life():
 	pluglist = open(pluglist, 'r').read().splitlines()
 	for plugin in pluglist:
 		countx = 1
-		while  countx < 3 :
+		while  countx < 20000 :
 			payloadx = requests.get("http://pluginu.com/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
 			list = re.findall('<p style="margin-bottom: 20px">(.*?)</p></a>', payloadx)
 			for x in list:
@@ -47,7 +47,7 @@ def pesta4life():
 	pluglist = open(pluglist, 'r').read().splitlines()
 	for plugin in pluglist:
 		countx = 1
-		while  countx < 3 :
+		while  countx < 20000 :
 			payloadx = requests.get("http://prestasites.com/theme/"+plugin+"/"+str(countx), headers=headers, timeout=10).text
 			list = re.findall('<h3 style="margin-bottom: 20px">(.*?)</h3></a>', payloadx)
 			for x in list:
